@@ -1,0 +1,120 @@
+/* Coisas gerais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+}
+
+/* Header */
+.header {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    padding: 1rem 0;
+    background: #fff;
+    display: flex;
+    justify-content: center; /* Centraliza a logo */
+    align-items: center;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+
+/* Seção Localizações */
+.locs {
+    margin-top: 120px; /* Espaço para não ficar atrás do header */
+    padding: 2rem 10%;
+    text-align: center;
+}
+
+.Localizacoes {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #007c32;
+}
+
+.espaco .linha {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+/* Cards (Barras) */
+.barra {
+    background: #fff;
+    width: 280px;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    border-bottom: 5px solid #007c32; /* Detalhe em verde */
+    transition: 0.4s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.barra:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px #007c3244;
+    border-bottom-color: #ffb81c;
+}
+
+.info a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.info img {
+    transition: 0.3s;
+}
+
+.barra:hover img {
+    transform: scale(1.1);
+}
+
+.dica-container {
+    text-align: center;
+    padding: 3rem 10%;
+    background-color: #ffffff; /* Fundo branco para destacar do body cinza */
+    margin: 2rem 10%;
+    border-radius: 1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.dica-container h1 {
+    color: #007c32; /* Verde Vale */
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+}
+
+.dica-container p {
+    color: #555;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+}
+
+.dica-container p strong {
+    color: #007c32;
+}
+
+.dica-container img {
+    width: 300px;
+    max-width: 90%; /* Responsivo */
+    height: auto;
+    border-radius: 10px;
+    border: 2px solid #eeeeee;
+    transition: transform 0.3s ease;
+}
+
+/* Efeito sutil ao passar o mouse na imagem da dica */
+.dica-container img:hover {
+    transform: scale(1.02);
+}
