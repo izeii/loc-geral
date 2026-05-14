@@ -252,6 +252,21 @@ body {
 }
 
 
+.footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding: 40px 0;
+    background-color: #007E7A;
+}
+
+.footer .copyright {
+    margin-top: 0px;
+    text-align: center;
+    font-size: 16px;
+    color: white;
+}
+
 /* Stagger por linha (continua igual) - descontinuado
 .espaco .linha .barra:nth-child(1) { --delay: 0ms; }
 .espaco .linha .barra:nth-child(2) { --delay: 80ms; }
