@@ -253,19 +253,55 @@ body {
 
 
 .footer {
-    position: relative;
-    bottom: 0;
     width: 100%;
-    padding: 40px 0;
-    background-color: #007E7A;
+    background: #007E7A;
+    padding: 44px 0;
+    border-top: 4px solid rgba(237, 177, 16, 0.9);
+    box-shadow: 0 -8px 22px rgba(0, 0, 0, 0.06);
+}
+
+.footer__inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 6%;
 }
 
 .footer .copyright {
-    margin-top: 0px;
     text-align: center;
     font-size: 16px;
-    color: white;
+    color: #ffffff;
+    line-height: 1.6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
+
+.footer-link {
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 2px solid transparent;
+    padding-bottom: 2px;
+    transition: color 200ms ease, border-color 200ms ease, transform 200ms ease;
+}
+
+.footer-link:hover {
+    color: #EDB110;
+    border-bottom-color: #EDB110;
+    transform: translateY(-1px);
+}
+
+.footer-sep {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.footer-text {
+    color: rgba(255, 255, 255, 0.95);
+    font-weight: 600;
+}
+
 
 /* Stagger por linha (continua igual) - descontinuado
 .espaco .linha .barra:nth-child(1) { --delay: 0ms; }
