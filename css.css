@@ -6,6 +6,10 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: #f4f4f4;
 }
@@ -46,15 +50,101 @@ body {
     color: #EDB110;
 }
 
+/* Menu de navegação entre Usinas */
+.nav-usinas {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.nav-pill {
+    display: inline-block;
+    padding: 0.65rem 1.5rem;
+    border-radius: 999px;
+    background: #fff;
+    color: #007E7A;
+    font-weight: 700;
+    font-size: 1rem;
+    text-decoration: none;
+    border: 2px solid #007E7A;
+    transition: background 200ms ease, color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    cursor: pointer;
+}
+
+.nav-pill:hover {
+    background: #007E7A;
+    color: #fff;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 126, 122, 0.25);
+}
+
+.nav-pill:active {
+    transform: translateY(0);
+}
+
+/* Card do WhatsApp */
+.whatsapp-card {
+    display: block;
+    text-decoration: none;
+    margin: 0 auto 2.5rem auto;
+    max-width: 420px;
+    background: #fff;
+    border-radius: 1.2rem;
+    border: 2px solid #25D366;
+    box-shadow: 0 4px 16px rgba(37, 211, 102, 0.12);
+    transition: transform 200ms ease, box-shadow 200ms ease;
+    cursor: pointer;
+}
+
+.whatsapp-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(37, 211, 102, 0.22);
+}
+
+.whatsapp-card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+}
+
+.whatsapp-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.whatsapp-text {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #075E54;
+}
+
+.whatsapp-arrow {
+    font-size: 1.3rem;
+    color: #25D366;
+    font-weight: 700;
+    transition: transform 200ms ease;
+}
+
+.whatsapp-card:hover .whatsapp-arrow {
+    transform: translateX(4px);
+}
+
 .espaco .linha {
     display: flex;
     justify-content: center;
     gap: 2rem;
     flex-wrap: wrap;
+    margin-bottom: 3.5rem;
 }
 
 
 .card-link {
+
     display: block;
     text-decoration: none;
     color: inherit;
@@ -63,41 +153,39 @@ body {
 /* Cards (Barras) */
 .barra {
     background: #fff;
-    width: 260px;
-    height: 260px;
+    width: min(260px, 90vw);
+    aspect-ratio: 1 / 1;
     padding: 2rem;
     border-radius: 1.5rem;
     border-bottom: 5px solid #007E7A;
-    /* Detalhe em verde */
-    /*transition: 0.4s ease;*/
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
 
-    /* deixa óbvio que dá pra clicar */
     cursor: pointer;
     position: relative;
+    overflow: hidden;
 
     /* variável que controla o "sobe/desce" do card */
     --ty: 18px;
 
     /* estado inicial do reveal */
     opacity: 0;
-    transform: translateY(var(--ty));
+    transform: translateY(var(--ty)) scale(0.98);
+    filter: blur(2px);
     --delay: 0ms;
     transition:
-        opacity 600ms ease var(--delay),
-        transform 600ms ease var(--delay),
+        opacity 650ms ease var(--delay),
+        transform 650ms cubic-bezier(.2,.8,.2,1) var(--delay),
+        filter 650ms ease var(--delay),
         box-shadow 400ms ease 0ms,
         border-bottom-color 400ms ease 0ms;
-    will-change: opacity, transform;
-
-
+    will-change: opacity, transform, filter;
 }
+
 
 
 /* === Indicação visual de clicável (no card inteiro) === */
 .barra::before {
-
-   content: "📍";
+    content: "📍";
     position: absolute;
     top: 14px;
     right: 14px;
@@ -105,25 +193,35 @@ body {
     width: 28px;
     height: 28px;
     border-radius: 999px;
-    /* interior branco (mesmo do card) */
     background: #fff;
-    /* borda azul igual a borda do card */
     border: 2px solid #007E7A;
-    /* cor do ícone (fica azul também) */
     color: #007E7A;
     display: grid;
     place-items: center;
     font-size: 14px;
-    /* sombra pode manter */
     box-shadow: 0 4px 12px rgba(0, 0, 0, .12);
-    /* animação suave quando mudar a borda/cor */
     transition: border-color 400ms ease, color 400ms ease;
-
+    z-index: 2;
 }
 
 .barra:hover::before {
-    border-color: #EDB110; /* mesmo amarelo da borda do card */
-    color: #EDB110;        /* opcional: ícone acompanha o amarelo */
+    border-color: #EDB110;
+    color: #EDB110;
+}
+
+.barra:focus-visible {
+    outline: 3px solid rgba(237, 177, 16, 0.55);
+    outline-offset: 3px;
+}
+
+.barra:focus-visible::before {
+    border-color: #EDB110;
+    color: #EDB110;
+}
+
+.barra:focus-visible::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
 }
 
 .barra::after {
@@ -138,6 +236,7 @@ body {
     opacity: 0;
     transition: opacity 200ms ease, transform 200ms ease;
     white-space: nowrap;
+    z-index: 2;
 }
 
 .barra:hover::after {
@@ -150,15 +249,33 @@ body {
     opacity: 1;
     --ty: 0px;
     --delay: 0ms;
+    transform: translateY(0px) scale(1);
+    filter: blur(0px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10);
+    animation: ringGlow 900ms ease-out both;
 }
+
+.barra {
+    background: radial-gradient(900px 240px at 50% -20%, rgba(237, 177, 16, 0.10), transparent 55%), #fff;
+}
+
+@keyframes ringGlow {
+    0% { box-shadow: 0 8px 22px rgba(0,0,0,0.08); }
+    60% { box-shadow: 0 22px 55px rgba(0,0,0,0.16); }
+    100% { box-shadow: 0 18px 40px rgba(0, 0, 0, 0.10); }
+}
+
 
 .barra:hover {
     --ty: -10px;
-    box-shadow: 0 10px 20px #555555;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.18);
     border-bottom-color: #EDB110;
+    transform: translateY(var(--ty)) scale(1.01);
 }
 
 /* imagem pode continuar com zoom suave */
+
+
 .barra img {
     transition: transform 0.3s ease;
 }
